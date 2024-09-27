@@ -1,4 +1,4 @@
-package com.senai.java.atividadeEmTrio.relatorio;
+package com.senai.java.desafioFintech.relatorio;
 
 // RelatorioFinanceiro.java
 public abstract class RelatorioFinanceiro {

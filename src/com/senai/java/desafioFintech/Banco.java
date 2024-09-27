@@ -1,12 +1,12 @@
-package com.senai.java.atividadeEmTrio;
+package com.senai.java.desafioFintech;
 
 // Banco.java
-import com.senai.java.atividadeEmTrio.conta.Conta;
-import com.senai.java.atividadeEmTrio.conta.ContaCorrente;
-import com.senai.java.atividadeEmTrio.conta.ContaPoupanca;
-import com.senai.java.atividadeEmTrio.relatorio.RelatorioContaCorrente;
-import com.senai.java.atividadeEmTrio.relatorio.RelatorioContaPoupanca;
-import com.senai.java.atividadeEmTrio.relatorio.RelatorioFinanceiro;
+import com.senai.java.desafioFintech.conta.Conta;
+import com.senai.java.desafioFintech.conta.ContaCorrente;
+import com.senai.java.desafioFintech.conta.ContaPoupanca;
+import com.senai.java.desafioFintech.relatorio.RelatorioContaCorrente;
+import com.senai.java.desafioFintech.relatorio.RelatorioContaPoupanca;
+import com.senai.java.desafioFintech.relatorio.RelatorioFinanceiro;
 
 import java.util.HashMap;
 import java.util.Map;

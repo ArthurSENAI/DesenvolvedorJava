@@ -1,7 +1,7 @@
-package com.senai.java.atividadeEmTrio;
+package com.senai.java.desafioFintech;
 
 // Programa.java
-import com.senai.java.atividadeEmTrio.conta.Conta;
+import com.senai.java.desafioFintech.conta.Conta;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

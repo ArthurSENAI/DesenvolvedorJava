@@ -1,4 +1,4 @@
-package com.senai.java.atividadeEmTrio.conta;
+package com.senai.java.desafioFintech.conta;
 
 // Conta.java
 import java.util.ArrayList;

@@ -1,25 +1,25 @@
-package com.senai.java.atividadeEmTrio.relatorio;
+package com.senai.java.desafioFintech.relatorio;
 
-import com.senai.java.atividadeEmTrio.conta.ContaCorrente;
-import com.senai.java.atividadeEmTrio.conta.Transacao;
+import com.senai.java.desafioFintech.conta.ContaPoupanca;
+import com.senai.java.desafioFintech.conta.Transacao;
 
-// RelatorioContaCorrente.java
-public class RelatorioContaCorrente extends RelatorioFinanceiro {
-    private ContaCorrente conta;
+// RelatorioContaPoupanca.java
+public class RelatorioContaPoupanca extends RelatorioFinanceiro {
+    private ContaPoupanca conta;
 
-    // Construtor que recebe uma instância de ContaCorrente
-    public RelatorioContaCorrente(ContaCorrente conta) {
+    // Construtor que recebe uma instância de ContaPoupanca
+    public RelatorioContaPoupanca(ContaPoupanca conta) {
         this.conta = conta;
     }
 
     // Implementação do método gerarRelatorio
     @Override
     public void gerarRelatorio() {
-        System.out.println("===== Relatório Conta Corrente =====");
+        System.out.println("===== Relatório Conta Poupança =====");
         System.out.printf("Titular: %s%n", conta.getTitular());
         System.out.printf("Número da Conta: %d%n", conta.getNumeroConta());
         System.out.printf("Saldo Atual: %.2f%n", conta.getSaldo());
-        System.out.printf("Limite Cheque Especial: %.2f%n", conta.getLimiteChequeEspecial());
+        System.out.printf("Taxa de Rendimento: %.2f%%%n", conta.getTaxaRendimento());
         System.out.println("Histórico de Transações:");
         for (Transacao transacao : conta.getHistoricoTransacoes()) {
             System.out.println(transacao);
@@ -27,4 +27,5 @@ public class RelatorioContaCorrente extends RelatorioFinanceiro {
         System.out.println("=====================================\n");
     }
 }
+
 
