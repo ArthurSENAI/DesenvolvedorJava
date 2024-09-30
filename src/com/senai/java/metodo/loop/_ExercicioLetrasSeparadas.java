@@ -1,4 +1,4 @@
-package com.senai.java.loop;
+package com.senai.java.metodo.loop;
 
 /*
     Escreva um programa que receba uma palavra e exiba cada letra separadamente - Utilize um laço for

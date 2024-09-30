@@ -1,4 +1,4 @@
-package com.senai.java.loop;
+package com.senai.java.metodo.loop;
 
 /*
     Desenvolva um programa que solicite ao usuário uma frase e exiba a frase de trás para frente - Utilize laço for
