@@ -1,4 +1,4 @@
-package com.senai.java.desafioVarejo;
+package com.senai.java.provaMercado;
 
 public class Produto {
     private String nome;
@@ -25,3 +25,4 @@ public class Produto {
         this.preco = preco;
     }
 }
+

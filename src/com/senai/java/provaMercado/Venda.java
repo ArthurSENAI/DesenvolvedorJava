@@ -1,32 +1,31 @@
-package com.senai.java.desafioVarejo;
-
-import com.senai.java.desafioVarejo.cliente.Cliente;
-import com.senai.java.desafioVarejo.produto.Produto;
+package com.senai.java.provaMercado;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pedido {
-    private int numeroPedido;
+public class Venda {
+    private int numeroVenda;
     private Cliente cliente;
     private List<Produto> listaProdutos;
     private double valorTotal;
+    private String dataVenda;
 
     //Construtor
-    public Pedido (int numeroPedido, Cliente cliente) {
-        this.numeroPedido = numeroPedido;
+    public Venda (int numeroVenda, Cliente cliente, String dataVenda) {
+        this.numeroVenda = numeroVenda;
         this.cliente = cliente;
         this.listaProdutos = new ArrayList<>();
         this.valorTotal = 0.0;
+        this.dataVenda = dataVenda;
     }
 
     //Getter e Setter
-    public int getNumeroPedido() {
-        return numeroPedido;
+    public int getnumeroVenda() {
+        return numeroVenda;
     }
 
-    public void setNumeroPedido(int numeroPedido) {
-        this.numeroPedido = numeroPedido;
+    public void setnumeroVenda(int numeroVenda) {
+        this.numeroVenda = numeroVenda;
     }
 
     public Cliente getCliente() {
@@ -49,6 +48,14 @@ public class Pedido {
         return valorTotal;
     }
 
+    public String getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(String dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+
     //Metodos
     public void adicionarProduto(Produto produto) {
         listaProdutos.add(produto);
@@ -59,6 +66,8 @@ public class Pedido {
         listaProdutos.remove(produto);
         valorTotal -= produto.getPreco();
     }
+
+
 
 
 }

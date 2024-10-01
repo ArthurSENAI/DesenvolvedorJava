@@ -1,11 +1,11 @@
-package com.senai.java.desafioVarejo;
+package com.senai.java.desafioVarejo.cliente;
 
-import com.senai.java.desafioFintech.conta.Transacao;
+import com.senai.java.desafioVarejo.Processamento;
 
 public class ClienteAtacado extends Cliente implements Processamento {
     private double desconto;
 
-    public ClienteAtacado(String nome, int CPF, double desconto) {
+    public ClienteAtacado(String nome, String CPF, double desconto) {
         super(nome, CPF);
         this.desconto = desconto;
     }

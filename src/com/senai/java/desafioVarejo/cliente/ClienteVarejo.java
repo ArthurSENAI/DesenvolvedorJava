@@ -1,9 +1,11 @@
-package com.senai.java.desafioVarejo;
+package com.senai.java.desafioVarejo.cliente;
 
-public class ClienteVarejo extends Cliente implements Processamento{
+import com.senai.java.desafioVarejo.Processamento;
+
+public class ClienteVarejo extends Cliente implements Processamento {
     private int pontosFidelidade;
 
-    public ClienteVarejo(String nome, int CPF, int pontosFidelidade) {
+    public ClienteVarejo(String nome, String CPF, int pontosFidelidade) {
         super(nome, CPF);
         this.pontosFidelidade = pontosFidelidade;
     }
