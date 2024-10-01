@@ -1,4 +1,4 @@
-package com.senai.java.metodo.loop;
+package com.senai.java.loop;
 
 /*
     Escreva um programa que receba uma frase e verifique quantas letras 'A' existem na frase - Utilize laço for

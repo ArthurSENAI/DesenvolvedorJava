@@ -1,4 +1,4 @@
-package com.senai.java.metodo.loop;
+package com.senai.java.loop;
 
 import java.util.Scanner;
 

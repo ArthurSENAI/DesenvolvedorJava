@@ -1,4 +1,4 @@
-package com.senai.java.desafioVarejo;
+package com.senai.java.desafioVarejo.relatorio;
 
 public abstract class RelatorioPedido {
 

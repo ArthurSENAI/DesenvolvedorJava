@@ -1,14 +1,16 @@
-package com.senai.java.provaMercado;
+package com.senai.java.desafioVarejo;
+
+import com.senai.java.desafioVarejo.cliente.ClienteAtacado;
+import com.senai.java.desafioVarejo.cliente.ClienteVarejo;
+import com.senai.java.desafioVarejo.produto.Produto;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-// Alunos: Arthur, Edson e Geraldo.
-
 public class Program {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Mercado mercado = new Mercado();
+        Varejo varejo = new Varejo();
         int opcao;
 
         do {
@@ -16,17 +18,17 @@ public class Program {
             System.out.print("Escolha uma opção: ");
             try {
                 opcao = scanner.nextInt();
-                scanner.nextLine();
+                scanner.nextLine(); // Consumir a quebra de linha
 
                 switch (opcao) {
                     case 1:
-                        criarPedidoClienteComum(scanner, mercado);
+                        criarPedidoClienteAtacado(scanner, varejo);
                         break;
                     case 2:
-                        criarPedidoClienteFrequente(scanner, mercado);
+                        criarPedidoClienteVarejo(scanner, varejo);
                         break;
                     case 3:
-                        gerarRelatorioPedidos(mercado);
+                        gerarRelatorioPedidos(varejo);
                         break;
                     case 4:
                         System.out.println("Saindo do sistema. Até logo!");
@@ -36,25 +38,26 @@ public class Program {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número válido.\n");
-                scanner.nextLine();
-                opcao = -1;
+                scanner.nextLine(); // Consumir a entrada inválida
+                opcao = -1; // Manter o loop ativo
             }
         } while (opcao != 4);
 
         scanner.close();
     }
 
+    // Método para exibir o menu de opções
     private static void exibirMenu() {
         System.out.println("===== Sistema de Varejo =====");
-        System.out.println("1. Criar Pedido para Cliente Comum");
-        System.out.println("2. Criar Pedido para Cliente Frequente");
+        System.out.println("1. Criar Pedido para Cliente Atacado");
+        System.out.println("2. Criar Pedido para Cliente Varejo");
         System.out.println("3. Gerar Relatórios");
         System.out.println("4. Sair");
         System.out.println("============================");
     }
 
     // Método para criar pedido para Cliente Atacado
-    private static void criarPedidoClienteComum(Scanner scanner, Mercado mercado) {
+    private static void criarPedidoClienteAtacado(Scanner scanner, Varejo varejo) {
         try {
             System.out.print("Digite o nome do cliente: ");
             String nome = scanner.nextLine();
@@ -62,20 +65,20 @@ public class Program {
             System.out.print("Digite o CPF do cliente: ");
             String cpf = scanner.nextLine();
 
-            System.out.print("Digite a data da compra (XX/XX/XXXX): ");
-            String data = scanner.nextLine();
+            System.out.print("Digite o desconto (%): ");
+            double desconto = scanner.nextDouble();
             scanner.nextLine(); // Consumir a quebra de linha
 
-            ClienteComum cliente = new ClienteComum(nome, cpf);
+            ClienteAtacado cliente = new ClienteAtacado(nome, cpf, desconto);
 
             System.out.print("Digite o número do pedido: ");
             int numeroPedido = scanner.nextInt();
             scanner.nextLine(); // Consumir a quebra de linha
 
-            Venda venda = new Venda(numeroPedido, cliente, data);
-            adicionarProdutosAoPedido(scanner, venda);
+            Pedido pedido = new Pedido(numeroPedido, cliente);
+            adicionarProdutosAoPedido(scanner, pedido);
 
-            mercado.adicionarPedido(venda);
+            varejo.adicionarPedido(pedido);
             System.out.println("Pedido para Cliente Atacado adicionado com sucesso!\n");
 
         } catch (InputMismatchException e) {
@@ -85,7 +88,7 @@ public class Program {
     }
 
     // Método para criar pedido para Cliente Varejo
-    private static void criarPedidoClienteFrequente(Scanner scanner, Mercado mercado) {
+    private static void criarPedidoClienteVarejo(Scanner scanner, Varejo varejo) {
         try {
             System.out.print("Digite o nome do cliente: ");
             String nome = scanner.nextLine();
@@ -93,27 +96,21 @@ public class Program {
             System.out.print("Digite o CPF do cliente: ");
             String cpf = scanner.nextLine();
 
-            System.out.print("Aplicar Desconto de promoção? (Senão clique 0): ");
-            int desconto = scanner.nextInt();
+            System.out.print("Digite os pontos de fidelidade: ");
+            int pontosFidelidade = scanner.nextInt();
             scanner.nextLine(); // Consumir a quebra de linha
 
-            System.out.print("Digite a data da compra (XX/XX/XXXX): ");
-            String data = scanner.nextLine(); // Coletando a data corretamente
-
-            ClienteFrequente cliente = new ClienteFrequente(nome, cpf, desconto);
+            ClienteVarejo cliente = new ClienteVarejo(nome, cpf, pontosFidelidade);
 
             System.out.print("Digite o número do pedido: ");
             int numeroPedido = scanner.nextInt();
             scanner.nextLine(); // Consumir a quebra de linha
 
-            Venda venda = new Venda(numeroPedido, cliente, data); // Use a data coletada
-            adicionarProdutosAoPedido(scanner, venda);
+            Pedido pedido = new Pedido(numeroPedido, cliente);
+            adicionarProdutosAoPedido(scanner, pedido);
 
-            double valorTotal = venda.getValorTotal(); // Obtém o valor total da venda
-            cliente.gerarNotaFiscal(valorTotal); // Gera a nota fiscal
-
-            mercado.adicionarPedido(venda); // Adiciona o pedido ao mercado
-            System.out.println("Pedido para Cliente Frequente adicionado com sucesso!\n");
+            varejo.adicionarPedido(pedido);
+            System.out.println("Pedido para Cliente Varejo adicionado com sucesso!\n");
 
         } catch (InputMismatchException e) {
             System.out.println("Erro na criação do pedido. Certifique-se de inserir os dados corretamente.\n");
@@ -121,13 +118,11 @@ public class Program {
         }
     }
 
-
-
     // Método para adicionar produtos ao pedido
-    private static void adicionarProdutosAoPedido(Scanner scanner, Venda venda) {
+    private static void adicionarProdutosAoPedido(Scanner scanner, Pedido pedido) {
         System.out.print("Quantos produtos deseja adicionar ao pedido? ");
         int quantidadeProdutos = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // Consumir a quebra de linha
 
         for (int i = 0; i < quantidadeProdutos; i++) {
             System.out.print("Digite o nome do produto: ");
@@ -135,42 +130,15 @@ public class Program {
 
             System.out.print("Digite o preço do produto: ");
             double precoProduto = scanner.nextDouble();
-            scanner.nextLine();
+            scanner.nextLine(); // Consumir a quebra de linha
 
             Produto produto = new Produto(nomeProduto, precoProduto);
-            venda.adicionarProduto(produto);
+            pedido.adicionarProduto(produto);
         }
     }
 
-    private static void removerProdutosAoPedido(Scanner scanner, Venda venda) {
-        System.out.print("Quantos produtos deseja remover? ");
-        int quantidadeProdutos = scanner.nextInt();
-        scanner.nextLine(); // Consumir a quebra de linha
-
-        for (int i = 0; i < quantidadeProdutos; i++) {
-            System.out.print("Digite o nome do produto a ser removido: ");
-            String nomeProduto = scanner.nextLine();
-
-            Produto produtoRemover = null;
-            for (Produto produto : venda.getListaProdutos()) {
-                if (produto.getNome().equalsIgnoreCase(nomeProduto)) {
-                    produtoRemover = produto;
-                    break;
-                }
-            }
-
-            if (produtoRemover != null) {
-                venda.removerProduto(produtoRemover);
-                System.out.println("Produto removido com sucesso: " + nomeProduto);
-            } else {
-                System.out.println("Produto não encontrado: " + nomeProduto);
-            }
-        }
-    }
-
-
-
-    private static void gerarRelatorioPedidos(Mercado mercado) {
-        mercado.gerarRelatorios();
+    // Método para gerar relatório dos pedidos diferenciando atacado e varejo
+    private static void gerarRelatorioPedidos(Varejo varejo) {
+        varejo.gerarRelatorios();
     }
 }

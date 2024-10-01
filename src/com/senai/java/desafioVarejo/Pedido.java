@@ -1,5 +1,8 @@
 package com.senai.java.desafioVarejo;
 
+import com.senai.java.desafioVarejo.cliente.Cliente;
+import com.senai.java.desafioVarejo.produto.Produto;
+
 import java.util.ArrayList;
 import java.util.List;
 

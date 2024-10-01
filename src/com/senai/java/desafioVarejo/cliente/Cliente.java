@@ -1,10 +1,10 @@
-package com.senai.java.desafioVarejo;
+package com.senai.java.desafioVarejo.cliente;
 
 public class Cliente {
     private String nome;
-    private int CPF;
+    private String CPF;
 
-    public Cliente(String nome, int CPF) {
+    public Cliente(String nome, String CPF) {
         this.nome = nome;
         this.CPF = CPF;
     }
@@ -17,11 +17,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(int CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
 }

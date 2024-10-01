@@ -1,4 +1,4 @@
-package com.senai.java.metodo.loop;
+package com.senai.java.loop;
 
 /*
     Desenvolva um programa que leia uma palavra ou frase e exiba a quantidade de vogais presentes na mesma - Utilize
